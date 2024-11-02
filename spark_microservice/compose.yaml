@@ -1,1 +1,12 @@
+version: '3'
 services:
+  spark_consumer_service:
+    build: .
+    networks:
+      - typeahead_network
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      
+networks:
+  typeahead_network:
+    external: true
