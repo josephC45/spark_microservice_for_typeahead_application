@@ -12,3 +12,9 @@ HBase: A distributed, scalable NoSQL database used for storing and retrieving th
 - Scalable Aggregation: Aggregates word occurrences using Apache Spark, with results stored in HBase for efficient querying.
 - HBase Integration: The word frequency data is stored in HBase, providing a fast and scalable solution for reading and updating word counts.
 - Spark for Data Processing: Uses Apache Spark for processing large-scale data, performing operations such as filtering, grouping, and aggregation.
+
+## License
+
+This project uses the following open-source libraries:
+- **Spring Kafka**: Licensed under the [Apache License 2.0](https://github.com/spring-projects/spring-kafka/blob/main/LICENSE).
+- **Apache Spark**: Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
