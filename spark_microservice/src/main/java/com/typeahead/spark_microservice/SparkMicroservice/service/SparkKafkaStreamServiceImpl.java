@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 import com.typeahead.spark_microservice.SparkMicroservice.configuration.KafkaProperties;
 
 @Service
-public class SparkServiceImpl implements SparkService {
+public class SparkKafkaStreamServiceImpl implements SparkKafkaStreamService{
 
     private final KafkaProperties kafkaProperties;
 
     private final SparkSession sparkSession;
 
-    // Will be injecting HBase service dependency
-    public SparkServiceImpl(KafkaProperties kafkaProperties) {
+    public SparkKafkaStreamServiceImpl(KafkaProperties kafkaProperties) {
         this.kafkaProperties = kafkaProperties;
 
         this.sparkSession = SparkSession.builder()
@@ -24,14 +23,7 @@ public class SparkServiceImpl implements SparkService {
                 .getOrCreate();
     }
 
-    @Override
-    public void start() {
-        Dataset<Row> kafkaConsumerStream = createKafkaConsumerStream();
-        Dataset<Row> wordsAndWordCounts = aggregateWords(kafkaConsumerStream);
-        // will save wordsAndWordCounts to HBase
-    }
-
-    private Dataset<Row> createKafkaConsumerStream() {
+    public Dataset<Row> createKafkaConsumerStream() {
         return sparkSession
                 .readStream()
                 .format("kafka")
@@ -39,12 +31,5 @@ public class SparkServiceImpl implements SparkService {
                 .option("subscribe", kafkaProperties.getTopic())
                 .option("startingOffsets", kafkaProperties.getOffset())
                 .load();
-    }
-
-    private Dataset<Row> aggregateWords(Dataset<Row> kafkaStream) {
-        return kafkaStream
-                .selectExpr("CAST(value AS STRING)")
-                .groupBy("word")
-                .count();
     }
 }
