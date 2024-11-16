@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.typeahead.spark_microservice.SparkMicroservice.configuration.KafkaProperties;
 
 @Service
-public class SparkKafkaStreamServiceImpl implements SparkKafkaStreamService{
+public class SparkKafkaStreamServiceImpl implements SparkKafkaStreamService {
 
     private final KafkaProperties kafkaProperties;
 

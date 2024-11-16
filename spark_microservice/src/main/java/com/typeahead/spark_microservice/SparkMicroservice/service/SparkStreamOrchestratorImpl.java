@@ -10,7 +10,8 @@ public class SparkStreamOrchestratorImpl implements SparkStreamOrchestrator {
     private final SparkKafkaStreamService kafkaStreamService;
     private final SparkWordAggregatorService wordAggregatorService;
 
-    public SparkStreamOrchestratorImpl(SparkKafkaStreamService kafkaStreamService, SparkWordAggregatorService wordAggregatorService){
+    public SparkStreamOrchestratorImpl(SparkKafkaStreamService kafkaStreamService,
+            SparkWordAggregatorService wordAggregatorService) {
         this.kafkaStreamService = kafkaStreamService;
         this.wordAggregatorService = wordAggregatorService;
         // HBase di will go here
