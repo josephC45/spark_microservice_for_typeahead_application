@@ -9,7 +9,7 @@ public class SparkWordAggregatorServiceImpl implements SparkWordAggregatorServic
 
     public Dataset<Row> aggregateWords(Dataset<Row> kafkaStream) {
         return kafkaStream
-                .selectExpr("CAST(value AS STRING)")
+                .selectExpr("CAST(value AS STRING) AS word")
                 .groupBy("word")
                 .count();
     }
