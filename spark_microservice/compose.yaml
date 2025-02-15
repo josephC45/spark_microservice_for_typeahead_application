@@ -1,17 +1,16 @@
 version: '3'
 services:
-
   spark:
     image: bitnami/spark:latest
-  networks:
-    - typeahead_network
-  environment:
-    - SPARK_MODE=standalone
-  ports:
-    - "7077:7077"
-    - "8081:8081"
-  volumes:
-    - spark-data:/bitnami
+    networks:
+      - typeahead_network
+    environment:
+      - SPARK_MODE=standalone
+    ports:
+      - "7077:7077"
+      - "8081:8081"
+    volumes:
+      - spark-data:/bitnami
 
   spark_consumer_service:
     build: .
