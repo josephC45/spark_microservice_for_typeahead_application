@@ -21,7 +21,7 @@ class KafkaToSparkConsumerServiceImpl extends ConsumerService<Dataset<Row>, Appl
     }
 
     @Override
-    Dataset<Row> ingestWordStream() {
+    Dataset<Row> ingestData() {
         return sparkSession
                 .readStream()
                 .format("kafka")
@@ -32,7 +32,7 @@ class KafkaToSparkConsumerServiceImpl extends ConsumerService<Dataset<Row>, Appl
     }
 
     @Override
-    Dataset<Row> aggregateByWord(Dataset<Row> ingestedStream) {
+    Dataset<Row> processData(Dataset<Row> ingestedStream) {
         return ingestedStream
                 .selectExpr("CAST(value AS STRING) AS word")
                 .groupBy("word")

@@ -11,6 +11,6 @@ public abstract class StreamOrchestrator<T, P> {
     abstract void sendToStorage(T wordAndWordCountStream);
 
     public void start() {
-        sendToStorage(consumerService.currentWordStream());
+        sendToStorage(consumerService.getProcessedData());
     }
 }

@@ -7,11 +7,16 @@ abstract class ConsumerService<T, P> {
         this.properties = properties;
     }
 
-    abstract T ingestWordStream();
+    abstract T ingestData();
 
-    abstract T aggregateByWord(T ingestedStream);
+    abstract T processData(T ingestedData);
 
-    T currentWordStream() {
-        return aggregateByWord(ingestWordStream());
+    private T retrieveProcessedData() {
+        T ingestedData= ingestData();
+        return processData(ingestedData);
+    }
+
+    T getProcessedData() {
+        return retrieveProcessedData();
     }
 }
