@@ -9,16 +9,16 @@ import com.typeahead.spark_microservice.SparkMicroservice.configuration.Applicat
 @Service
 class SparkStreamOrchestrator extends StreamOrchestrator<Dataset<Row>, ApplicationConfig> {
 
-    private final UploadToStorageService<Dataset<Row>, ApplicationConfig> uploadToStorageService;
+    private final StorageService<Dataset<Row>, ApplicationConfig> storageService;
 
     SparkStreamOrchestrator(ConsumerService<Dataset<Row>, ApplicationConfig> kafkaToSparkConsumerService,
-            UploadToStorageService<Dataset<Row>, ApplicationConfig> uploadToStorageService) {
+            StorageService<Dataset<Row>, ApplicationConfig> storageService) {
         super(kafkaToSparkConsumerService);
-        this.uploadToStorageService = uploadToStorageService;
+        this.storageService = storageService;
     }
 
     @Override
     void sendToStorage(Dataset<Row> wordAndWordCountStream) {
-        uploadToStorageService.upload(wordAndWordCountStream); // TODO Create concrete impl
+        storageService.upload(wordAndWordCountStream); // TODO Create concrete impl
     }
 }

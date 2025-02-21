@@ -1,9 +1,9 @@
 package com.typeahead.spark_microservice.SparkMicroservice.service;
 
-abstract class UploadToStorageService<T, P> {
+abstract class StorageService<T, P> {
     final P properties;
 
-    UploadToStorageService(P properties) {
+    StorageService(P properties) {
         this.properties = properties;
     }
 
