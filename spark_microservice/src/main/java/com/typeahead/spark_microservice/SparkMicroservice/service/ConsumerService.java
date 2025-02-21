@@ -12,7 +12,7 @@ abstract class ConsumerService<T, P> {
     abstract T processData(T ingestedData);
 
     private T retrieveProcessedData() {
-        T ingestedData= ingestData();
+        T ingestedData = ingestData();
         return processData(ingestedData);
     }
 

@@ -1,4 +1,5 @@
 package com.typeahead.spark_microservice.SparkMicroservice.service;
+
 //TODO Maybe consider mediator pattern?
 public abstract class StreamOrchestrator<T, P> {
 

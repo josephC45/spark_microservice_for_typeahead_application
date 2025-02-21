@@ -19,6 +19,6 @@ class SparkStreamOrchestrator extends StreamOrchestrator<Dataset<Row>, Applicati
 
     @Override
     void sendToStorage(Dataset<Row> wordAndWordCountStream) {
-        uploadToStorageService.upload(wordAndWordCountStream); //TODO Create concrete impl
+        uploadToStorageService.upload(wordAndWordCountStream); // TODO Create concrete impl
     }
 }
